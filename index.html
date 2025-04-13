@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walidator formularza</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Montserrat:400,700&display=swap&subset=latin-ext"
+        rel="stylesheet">
+
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: 'Montserrat', sans-serif;
+        background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+    }
+
+    .wrapper {
+        width: 440px;
+        background-color: #fff;
+        box-shadow: 0 0 10px #000;
+    }
+
+    form {
+        padding: 40px;
+        font-size: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .form-box {
+        margin-bottom: 15px;
+    }
+
+    .form-box label {
+        display: inline-block;
+        margin-bottom: 5px;
+    }
+
+    .form-box input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid rgb(197, 197, 197);
+        border-radius: 5px;
+    }
+
+    .form-box.error input {
+        border: 1px solid rgb(0, 137, 250);
+        background-color: rgba(0, 137, 250, .1);
+    }
+
+    .form-box .error-text {
+        visibility: hidden;
+        margin: 5px 0 0 10px;
+        font-size: 14px;
+        color: rgb(0, 137, 250);
+    }
+
+    .form-box.error .error-text {
+        visibility: visible;
+    }
+
+    .control-buttons {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .send,
+    .clear,
+    .close {
+        display: block;
+        padding: 10px 0;
+        margin-left: 10px;
+        width: 100px;
+        font-size: 18px;
+        background-color: rgb(0, 140, 255);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color .3s;
+    }
+
+    .send:hover,
+    .clear:hover,
+    .close:hover {
+        background-color: rgb(0, 107, 194);
+    }
+
+    .popup {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: absolute;
+        top: -300px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 200px;
+        background-color: rgb(255, 255, 255);
+        border-radius: 8px;
+        border: 2px solid black;
+        transition: top .5s;
+    }
+
+    .popup p {
+        font-size: 28px;
+    }
+
+    .popup button {
+        margin-top: 20px;
+    }
+
+    .show-popup {
+        top: 150px;
+    }
+</style>
+
+<body>
+
+    <div class="wrapper">
+        <form>
+            <h1>Zarejestruj się!</h1>
+            <div class="form-box">
+                <label for="username">Nazwa użytkownika:</label>
+                <input type="text" id="username" placeholder="Podaj nazwę użytkownika">
+                <p class="error-text">error</p>
+            </div>
+            <div class="form-box">
+                <label for="password">Hasło:</label>
+                <input type="password" id="password" placeholder="Podaj hasło">
+                <p class="error-text">error</p>
+            </div>
+            <div class="form-box">
+                <label for="password2">Powtórz hasło:</label>
+                <input type="password" id="password2" placeholder="Powtórz hasło">
+                <p class="error-text">error</p>
+            </div>
+            <div class="form-box">
+                <label for="email">Adres e-mail:</label>
+                <input type="email" id="email" placeholder="Podaj adres mailowy">
+                <p class="error-text">error</p>
+            </div>
+            <div class="control-buttons">
+                <button class="clear">Wyczyść</button>
+                <button class="send">Wyślij</button>
+            </div>
+            <div class="popup">
+                <p>Formularz został poprawnie wysłany!</p>
+                <button class="close">Zamknij</button>
+            </div>
+        </form>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
