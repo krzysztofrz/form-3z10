@@ -171,8 +171,8 @@
 
     <script>
         const username = document.querySelector('#username');
-        const pass = document.querySelector('#password');
-        const pass2 = document.querySelector('#password2');
+        const password = document.querySelector('#password');
+        const password2 = document.querySelector('#password2');
         const email = document.querySelector('#email');
 
         const sendBtn = document.querySelector('.send');
@@ -180,6 +180,51 @@
 
         const popup = document.querySelector('.popup');
 
+        const showError = (input, msg) => {
+            const formBox = input.parentElement
+            const errorMsg = formBox.querySelector(".error-text")
+
+            formBox.classList.add("error")
+            errorMsg.textContent = msg
+
+        }
+
+        const clearError = input => {
+            const formBox = input.parentElement
+            formBox.classList.remove("error")
+        }
+
+        const checkForm = input => {
+            input.forEach(el => {
+                if (el.value === "") {
+                    showError(el, el.placeholder)
+                } else {
+                    clearError(el)
+                }
+            })
+        }
+
+        const checkLength = (input, min) => {
+            if (input.value.length < min) {
+                showError(input, "cos jest za krotkie")
+            }
+        }
+
+        sendBtn.addEventListener("click", e => {
+            e.preventDefault();
+
+            checkForm([username, password, password2, email])
+            checkLength(username, 3)
+            checkLength(password, 8)
+        })
+
+        clearBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            [username, password, password2, email].forEach(el => {
+                el.value = "";
+            });
+        });
 
     </script>
 </body>
